@@ -196,10 +196,10 @@ var UIController = (function() {
     },
 
     displayBudget: function(obj) {
-
-      document.querySelector(DOMString.budgetLabel).textContent = obj.budget;
-      document.querySelector(DOMString.incomeLabel).textContent = obj.totalIncome;
-      document.querySelector(DOMString.expenseLabel).textContent = obj.totalExpense;
+      obj.budget > 0 ? type = 'inc' : type = 'exp';
+      document.querySelector(DOMString.budgetLabel).textContent = this.formatNumber(obj.budget, type);
+      document.querySelector(DOMString.incomeLabel).textContent = this.formatNumber(obj.totalIncome, 'inc');
+      document.querySelector(DOMString.expenseLabel).textContent = this.formatNumber(obj.totalExpense, 'exp');
       document.querySelector(DOMString.percentageLabel).textContent = obj.percentage + '%';
 
       if (obj.percentage > 0){
